@@ -3,21 +3,24 @@ import "./Nav.css";
 
 function Nav() {
     const [show, setShow] = useState(false)
-    const transitionNavbar =()=>{
-        if(window.screenY > 100){
+    function transitionNavbar(){
+      let positionY = window.pageYOffset ;
+      console.log("window.screenY before",positionY )
+        if( positionY > 100){
         setShow(true)
         }else{
             setShow(false)
         }
     }
-
+  
     useEffect(()=>{
-        window.addEventListener("scroll",transitionNavbar);
-        // return()=> window.removeEventListener("scroll",transitionNavbar);
+      window.addEventListener("scroll",transitionNavbar);
+      return ()=>window.removeEventListener("scroll",transitionNavbar)
     },[])
+       
 
   return (
-    <div className= {`nav ${show && "nav__black" } `}>
+    <div className= {`nav ${ show && "nav__black" }`}>
       <div className="nav__content">
         <img
           className="nav__logo"
