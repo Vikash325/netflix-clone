@@ -4,7 +4,9 @@ import "./Nav.css";
 function Nav() {
     const [show, setShow] = useState(false)
     const transitionNavbar =()=>{
-        if(window.screenY > 100){
+      console.log(window.pageYOffset)
+      let postionY = window.pageYOffset
+        if(postionY > 100){
         setShow(true)
         }else{
             setShow(false)
@@ -13,7 +15,7 @@ function Nav() {
 
     useEffect(()=>{
         window.addEventListener("scroll",transitionNavbar);
-        // return()=> window.removeEventListener("scroll",transitionNavbar);
+       return()=> window.removeEventListener("scroll",transitionNavbar);
     },[])
 
   return (
